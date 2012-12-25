@@ -1,0 +1,13 @@
+{
+  "name": "nTrapy",
+  "version": "0.0.1",
+  "main": "./ntrapy.js",
+  "dependencies": {
+    "bootstrap": "latest",
+    "jquery": "latest",
+    "jquery-ui": "latest",
+    "knockout": "latest",
+    "knockout-mapping": "latest",
+    "knockout-sortable": "latest"
+  }
+}

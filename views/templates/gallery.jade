@@ -1,0 +1,32 @@
+script(type='text/html', id='galleryTemplate')
+  #modal-gallery.modal.modal-gallery.hide.fade(tabindex='-1')
+    .modal-header
+      a.close(data-dismiss='modal')&times;
+      h3.modal-title
+    .modal-body: .modal-image
+    .modal-footer
+      a.btn.modal-download(target='_blank')
+        i.icon-download
+        | Download
+      a.btn.btn-success.modal-play.modal-slideshow(data-slideshow='5000')
+        i.icon-play.icon-white
+        | Slideshow
+      a.btn.btn-info.modal-prev
+        i.icon-arrow-left.icon-white
+        | Previous
+      a.btn.btn-primary.modal-next
+        | Next
+        i.icon-arrow-right.icon-white
+   
+  .container
+    .row
+      .span2
+        .sidebar-nav
+          ul.nav.nav-list(data-bind='foreach: galleryNav')
+            li(data-bind='css: type, text: name')
+      .span10
+        #gallery(data-toggle='modal-gallery', data-target='#modal-gallery')
+          ul.thumbnails(data-bind='foreach: galleryThumbs')
+            li.span3
+              a.thumbnail(rel='gallery', data-bind='attr: {href: thumbURL, title: title}')
+                img(data-bind='attr: {src: fullURL}')

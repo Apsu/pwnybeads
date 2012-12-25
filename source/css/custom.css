@@ -1,0 +1,42 @@
+body {
+  /* Space navbar */
+  padding-top: 50px;
+  padding-bottom: 40px;
+}
+
+/* Drop shadow yay */
+.drop-shadow {
+  -moz-box-shadow: 1px 1px 5px rgba(0,0,0,.5);
+  -webkit-box-shadow: 1px 1px 5px rgba(0,0,0,.5);
+  box-shadow: 1px 1px 5px rgba(0,0,0,.5);
+}
+
+/* Convenience classes */
+.clear-right { clear: right; }
+.clear-left { clear: left; }
+.clear-both { clear: both; }
+
+/* Re-space wells */
+.well {
+  min-width: 100px;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-bottom: 0px;
+  padding-bottom: 10px;
+}
+
+/* Fix sibling-spacing so overflow aligns */
+.well { margin-right: 10px; }
+.well + .well { margin-left: 0px; margin-right: 10px; }
+.well:only-of-type { margin-right: 0px; }
+.well:last-of-type { margin-right: 0px; }
+
+.btn-group { margin-right: 5px; }
+.btn-group + .btn-group {
+  margin-left: 0px;
+  margin-right: 5px;
+}
+.btn-group:only-of-type, .btn-group:last-of-type {
+  margin-right: 0px;
+  padding-right: 0px;
+}
