@@ -53,14 +53,12 @@ app.post "/api/login", (req, res) ->
         name: req.body.user
         password: req.body.pass
       content_type: "application/x-www-form-urlencoded; charset=utf-8"
-    ,
-    (err, body, headers) ->
+    , (err, body, headers) ->
       if err
         res.send err.reason
       else
         if headers?["set-cookie"]
           res.cookie headers["set-cookie"]
-   
         res.send "Logged in!"
 
 app.post "/api/logout", (req, res) ->
