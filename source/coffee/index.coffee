@@ -1,119 +1,49 @@
 "use strict"
 
-# Grab namespace
-pwnybeads = exports?.pwnybeads ? @pwnybeads
+pwnybeads = exports?.pwnybeads ? @pwnybeads = {}
+
+# Selector computed observable
+pwnybeads.selector = (cb, def) ->
+  @selected = ko.observable def ? {} unless @selected?
+  ko.computed
+    read: =>
+      @selected()
+    write: (data) =>
+      @selected data
+      cb data if cb?
 
 $ ->
-  IndexModel = ->
-    @sections = ko.observableArray [
-      name: "Home"
-      template: "homeTemplate"
-    ,
-      name: "About"
-      template: "aboutTemplate"
-    ,
-      name: "Gallery"
-      template: "galleryTemplate"
-    ,
-      name: "Store"
-      template: "storeTemplate"
-    ,
-      name: "Sizing"
-      template: "sizingTemplate"
-    ,
-      name: "Blog"
-      template: "blogTemplate"
-    ,
-      name: "FAQ"
-      template: "faqTemplate"
-    ,
-      name: "Contact"
-      template: "contactTemplate"
-    ]
+  ViewModel = ->
+    @faqNav = ko.observableArray()
+    @galleryNav = ko.observableArray()
+    @galleryImages = ko.observableArray()
+    @siteNav = ko.observableArray()
+    @siteActive = pwnybeads.selector (data) =>
+      # Reload mapped data on template load
+      switch data.name 
+        when "Gallery" 
+          @getMappedData "/api/gallery/nav", @galleryNav
+          @getMappedData "/api/gallery/images", @galleryImages
+        when "FAQ"
+          @getMappedData "/api/faq/nav", @faqNav
 
-    @section = pwnybeads.selector @sections(), (data) ->
-      switch data.name
-        when "Gallery"
-          # load data
-          console.log "Load gallery data"
-    , @sections()[0] # Set default
+    # Get JSON data from url, map to pin, call cb
+    @getMappedData = (url, pin, cb) ->
+      $.getJSON url, (data) ->
+        ko.mapping.fromJS data.items, {}, pin
+        cb() if cb?
 
-    @galleryThumbs = ko.mapping.fromJS [
-      title: "Test"
-      thumbURL: "http://placehold.it/128x128"
-      fullURL: "http://placehold.it/128x128"
-    ,
-      title: "Test"
-      thumbURL: "http://placehold.it/128x128"
-      fullURL: "http://placehold.it/128x128"
-    ,
-      title: "Test"
-      thumbURL: "http://placehold.it/128x128"
-      fullURL: "http://placehold.it/128x128"
-    ,
-      title: "Test"
-      thumbURL: "http://placehold.it/128x128"
-      fullURL: "http://placehold.it/128x128"
-    ,
-      title: "Test"
-      thumbURL: "http://placehold.it/128x128"
-      fullURL: "http://placehold.it/128x128"
-    ,
-      title: "Test"
-      thumbURL: "http://placehold.it/128x128"
-      fullURL: "http://placehold.it/128x128"
-    ,
-      title: "Test"
-      thumbURL: "http://placehold.it/128x128"
-      fullURL: "http://placehold.it/128x128"
-    ,
-      title: "Test"
-      thumbURL: "http://placehold.it/128x128"
-      fullURL: "http://placehold.it/128x128"
-    ,
-      title: "Test"
-      thumbURL: "http://placehold.it/128x128"
-      fullURL: "http://placehold.it/128x128"
-    ,
-      title: "Test"
-      thumbURL: "http://placehold.it/128x128"
-      fullURL: "http://placehold.it/128x128"
-    ,
-      title: "Test"
-      thumbURL: "http://placehold.it/128x128"
-      fullURL: "http://placehold.it/128x128"
-    ,
-      title: "Test"
-      thumbURL: "http://placehold.it/128x128"
-      fullURL: "http://placehold.it/128x128"
-    ]
+    # Template accessor that avoids data-loading race
+    @getTemplate = ko.computed =>
+      @siteActive()?.template?() ? {}
 
-    @galleryNav = ko.mapping.fromJS [
-      type: "nav-header"
-      name: "Section A"
-    ,
-      type: ""
-      name: "Item 1"
-    ,
-      type: ""
-      name: "Item 2"
-    ,
-      type: "divider"
-    ,
-      type: ""
-      name: "Item 3"
-    ]
+    # Preload data
+    @getMappedData "/api/site/nav", @siteNav, =>
+      @siteActive @siteNav()[0]
+    @getMappedData "/api/gallery/nav", @galleryNav
+    @getMappedData "/api/gallery/images", @galleryImages
+    @getMappedData "/api/faq/nav", @faqNav
 
     @ # Return ourself
 
-  popoverOptions =
-    delay: 0
-    trigger: "hover"
-    animation: true
-    placement: pwnybeads.get_popover_placement
-
-  ko.bindingHandlers.popper =
-    init: (element, valueAccessor) ->
-      $(element).popover popoverOptions
-
-  ko.applyBindings new IndexModel()
+  ko.applyBindings new ViewModel()

@@ -1,3 +1,194 @@
 script(type='text/html', id='faqTemplate')
-  .well
-    h1 FAQ test!
+  .container
+    .row
+      .span3
+        .sidebar-nav
+          ul.nav.nav-list(data-bind='foreach: faqNav')
+            li(data-bind='css: type, text: name')
+      .span9
+        h1 FAQ
+        hr
+        h2 Materials
+        p: strong Q: 
+        | Do you use genuine gemstones in your pieces?
+        p: strong A:
+        | Yes, where indicated. If I list a piece with genuine gemstones as part of the materials, then you can rest assured that you are getting genuine gemstones.
+        hr
+        strong Q:
+        p What types of beads do you use?
+        strong A:
+        p I use only professional-grade beads, including fire-polished glass beads, genuine Millefiori glass beads, Desert Sun glass beads, Swarovski Crystals, Swarovski Crystal Pearls, Preciosa Ornela Cultura Pearls, Miyuki glass seed beads, Preciosa Ornela seed beads, and a plethora of genuine gemstones. My metal beads are lead-free tin-based pewter or zinc-based pewter, and lead-free silver-plated brass.
+        | Q: What type of threads and fibers do you use in your pieces?
+        | A: Most pieces will have their specific fiber listed, however I use a few different types of fibers. For my crocheted pieces, I use 100% mercerized cotton, 100% mercerized Egyptian cotton, and 100% bamboo crochet threads. For my strung pieces, I use a multi-strand braided stainless steel beading wire coated in nylon.
+        | Q:!
+        | Do you use any sterling silver, or actual gold beads or findings?
+        | A:!
+        | Not unless specifically requested. The prices for each piece I make are based
+        | solely on the amount and types of materials I use. Using professional-quality silver
+        | plated beads and findings allows me to keep my prices far lower than those who use
+        | sterling silver or karat gold items. Also, since I primarily cater to the medical ID
+        | bracelets, silver is far more likely to match the engraved tags of most customers.
+        | However, if gold-plated, karat gold, or sterling silver beads or findings are requested,
+        | then I can always order whatever is necessary to complete a custom order.
+        | Sales Tax
+        | Q:!
+        | Do you charge sales tax?
+        | A:!
+        | As a business registered in Texas, I’m required by state law to charge sales tax
+        | on all orders that are being delivered to the state of Texas.
+        | Q:!
+        | A:!
+        | What is your sales tax rate?
+        | 8.125% on the total cost of the order prior to shipping charges.
+        |  
+        |  
+        | Custom Item Requests
+        | Q:!
+        | Do you accept requests for custom items?
+        | A:!
+        | Yes! In fact, I encourage them! Simply email me at pwny@pwnybeads.com, use
+        | the contact form here on the site, or contact me via my Etsy shop page and let me know
+        | what you’d like designed for you!
+        | Q:!
+        | If there’s a design I see on another site for a very high price and want to have
+        | made by you for a lower price, would you do that?
+        | A:!
+        | That depends on exactly what you want. I will not copy another artist’s design
+        | exactly, just as I would not want another artist to copy any of my designs. However, if
+        | you want me to use that design as a jumping-off point for designing your custom item,
+        | I’d be willing to work with you to create something just for you.
+        | Q:!
+        | Do you charge more for a custom item than you do for your already-available
+        | designs?
+        | A:!
+        | Not at all! I have a set formula I use for calculating the sale price of any item I
+        | make. That formula is based solely on the type and amount of materials used to make
+        | each piece. Materials that are more costly will result in a more expensive finished
+        | piece. This is true for the designs that are already available and for custom item
+        | requests. There is no additional surcharge applied to custom requests.
+        | Q:!
+        | What is the turn-around time for custom requests?
+        | A:!
+        | There is no standard turn-around time for custom item requests, as each one is
+        | different. I will always communicate openly with you during the design process, keeping
+        | you as updated as possible about the timing. Timing will vary, depending on how
+        | complicated the design is, whether I have to order materials I don’t normally carry, how
+        | quickly I receive responses to any questions I ask the customer placing the request, and
+        | other factors. This is my only job, and I work nearly every day, so you can rest assured
+        | that I will be working diligently to complete your piece quickly, with professionalism and
+        | high quality.
+        | Shipping
+        | Q:!
+        | A:!
+        | How do you ship orders?
+        | Each order is shipped via USPS First Class Package, with Delivery Confirmation.
+        | Q:!
+        | Do you offer package tracking information for orders?
+        | A:!
+        | Yes! Every order has Delivery Confirmation, which provides a tracking number
+        | that can be used to track your shipment’s progress at USPS.com
+        |  
+        |  
+        |  
+        | Q:!
+        | How long does it take to receive the shipment?
+        | A:!
+        | Shipping time varies, and depends on the USPS (and any applicable foreign
+        | shipping service). Typically, it takes two to three business days, not including the date
+        | of shipping, for the package to be delivered within the continental United States via First
+        | Class Package shipping. Priority Mail packages cost several dollars more to ship, and
+        | take the same amount of time to arrive.
+        | Q:!
+        | If I want faster shipping, do you offer expedited options?
+        | A:!
+        | If you’d like to use an expedited shipping service, you’ll want to place a custom
+        | item request so that I can make a special listing for you, including the appropriate
+        | shipping charge.
+        | Payment, Returns, Exchanges
+        | Q:!
+        | What methods of payment do you accept?
+        | A:!
+        | I currently accept direct credit card payments through my Etsy shop for all major
+        | credit cards (Visa, Mastercard, American Express, and Discover), as well as PayPal.
+        | Q:!
+        | I ordered an item, but changed my mind once I received it. Can I get a refund?
+        | A:!
+        | I accept returns for refund, minus shipping cost, if you contact me within 48 hours
+        | of delivery. Items must be in unworn/unused condition, with no signs of damage upon
+        | my receipt of return. Customer is responsible for return shipping charges. Refund will
+        | be submitted to customer within 3 business days of receipt of return.
+        | Q:!
+        | I just received my order, and my item doesn’t fit properly. Can I exchange it for
+        | another size?
+        | A:!
+        | Each item is made-to-order, and jewelry items such as bracelets, necklaces, and
+        | anklets are sized using a mandrel to ensure that the inside diameter matches the
+        | measurement indicated at the time the order is placed. If your item doesn’t fit the way
+        | you’d like when you receive it, I’ll be happy to remake it for you. No charges will apply
+        | as long as the new size falls within the standard sizes offered for that item. The
+        | customer is responsible for return shipping of the original item, as well as the shipping
+        | cost for the new item.
+        | Q:!
+        | I damaged my item and need to have it repaired. What do you charge for
+        | repairs?
+        | A:!
+        | Every piece that leaves my shop is made with the highest quality materials, and
+        | should last years with normal wear. If something happens and your piece needs repair,
+        | the cost for doing the repair will depend on what work needs done. The cost for repair
+        | will never exceed the original purchase price, except in the case that the piece used
+        | karat gold or sterling silver components whose cost may increase greatly. Customer will
+        |  
+        |  
+        |  
+        |  
+        |  
+        | be responsible for return shipping of the original piece, as well as shipping for the
+        | repaired piece. Repair cost will depend on the amount and types of materials needed
+        | for the repair.
+        | Sizing
+        | Q:!
+        | I’m not sure what size I need. How do I figure out my size?
+        | A:!
+        | Please refer to our “Sizing Information” page for easy sizing instructions. If you
+        | have any questions, please email me at pwny@pwnybeads.com
+        | Cleaning and Care
+        | Q:!
+        | How do I know how to clean my new item?
+        | A:!
+        | Cleaning and care instructions for each type of item ordered are included with
+        | every order. If you have any specific questions, you can email me at
+        | pwny@pwnybeads.com
+        | Q:!
+        | Why is my item showing signs of tarnish?
+        | A: ! Many metals, including silver-plated, sterling silver, and others, tarnish naturally
+        | with exposure to air, skin, and chemicals. To remove tarnish, simply polish the
+        | tarnished areas with a Silver Polishing Cloth (available at most jewelry stores, online, or
+        | at the jewelry counter of most department stores). Tarnish is simply a chemical reaction
+        | that naturally occurs with exposure to air, and can easily be cleaned with a little
+        | polishing. Placing your jewelry item in a zip-close baggie when not in use will help slow
+        | the process of tarnishing.
+        | Q:!
+        | Can I wear my jewelry item in the water?
+        | A:!
+        | Of course you can! For items that are crocheted, they go great in the water.
+        | They’ll dry nicely if you continue to wear them or gently press out the extra water with a
+        | towel. Beaded crochet pieces should be laid flat to dry, while crocheted pieces without
+        | beads can be placed between layers of a towel or wash cloth and flattened with a book
+        | to keep them from twisting while drying.
+        | !
+        | For jewelry that is strung on wire, wearing in heavily chlorinated pools or hard
+        | water is not recommended, as it may dull the luster on some bead finishes, or cause
+        | premature tarnishing of metal components. However, you *can* wear them in the water.
+        | Just make sure to use a soft, lint-free cloth to polish them when they’re dry on a regular
+        |  
+        |  
+        |  
+        |  
+        |  
+        |  
+        | basis. Doing so removes mineral deposits, body oils, lotions, perfumes, and other build-
+        | up that may accrue on the piece, helping to restore the like-new shine!
+
+
+
+

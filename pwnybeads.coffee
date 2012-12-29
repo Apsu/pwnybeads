@@ -65,27 +65,33 @@ app.post "/api/logout", (req, res) ->
   res.clearCookie "AuthSession"
   res.send "Logged out!"
 
-app.get "/api/gallery/nav", (req, res) ->
+app.post "/api/:db/:doc", (req, res) ->
   auth = req.cookies["AuthSession"]
   unless auth?
-    res.send 401
+    res.send 401, "Error: Login first"
   else
     nano = require("nano")
       url: "http://localhost:5984"
       cookie: "AuthSession=" + auth
 
-    nano.db.create "gallery", (err, body) ->
-      if err?
-        res.send 409, err.reason
-      else
-        res.cookie headers["set-cookie"] if headers?["set-cookie"]
-        res.send "Created"
-#        nano.db.destroy "pwnybeads", (err, body) ->
-#          if err?
-#            res.send(err.reason)
-#          else
-#            res.cookie headers["set-cookie"] if headers?["set-cookie"]
-#            res.send "All done!"
+    db = nano.use req.params.db
+#    db.get req.params.doc, (err, body) ->
+#      if err?
+#        res.send 400, "Error: /" + req.params.db + "/" + req.params.doc + " returned: " + err.reason
+#      else
+#        res.cookie headers["set-cookie"] if headers?["set-cookie"]
+#        res.send body
+    res.send "Stub"
+
+app.get "/api/:db/:doc", (req, res) ->
+  nano = require("nano") "http://localhost:5984"
+  db = nano.use req.params.db
+  db.get req.params.doc, (err, body) ->
+    if err?
+      res.send 400, "Error: /" + req.params.db + "/" + req.params.doc + " returned: " + err.reason
+    else
+      res.cookie headers["set-cookie"] if headers?["set-cookie"]
+      res.send body
 
 # HTTP server
 http.createServer(app).listen app.get("port"), ->
